@@ -1,63 +1,142 @@
-import { Box, Stack, styled, Typography } from "@mui/material";
+import BaseHeader from "@components/BaseHeader";
+import ChildImage from "@components/ChildImage";
+import FirstSection from "@components/FirstSection";
+import { Box, Grid, Stack, styled, Typography } from "@mui/material";
 import { theme } from "@theme";
 const WrapperBase = styled(Stack)({
-  width: "100%",
-  height: "100vh",
+  height: "auto",
   backgroundColor: theme.palette.primary.main,
 });
 export default function HomePage() {
   return (
     <WrapperBase>
-      <Box
+      <BaseHeader>
+        <>
+          {" "}
+          <Typography
+            sx={{
+              fontFamily: "Mea Culpa !important",
+            }}
+            align="center"
+            color="#fff"
+            fontSize={21}
+            mt={6.5}
+          >
+            Hiếu & Hải
+            <Typography
+              sx={{ fontFamily: "Medula One !important" }}
+              align="center"
+              color="#fff"
+              fontSize={13}
+            >
+              24.12.2022
+            </Typography>
+          </Typography>
+          <Typography
+            fontSize={11}
+            width={327}
+            sx={{ position: "absolute", bottom: 40, left: 35, zIndex: 2 }}
+          >
+            {`“Đây không phải là thiệp cưới. Đây là một thư mời chứa một tình cảm đặc biệt gửi đến 1 người đặc biệt của {inviter} theo 1 cách đặc biệt nhất!`}
+          </Typography>
+        </>
+      </BaseHeader>
+      <FirstSection />
+      <Stack
         sx={{
-          width: "100%",
-          height: 250,
-          background:
-            "linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(255, 255, 255, 0) 38.14%), url(/images/header.png)",
+          height: 525,
+          background: "url(/images/background.jpg)",
           backgroundRepeat: "no-repeat",
-          backgroundSize: "contain",
+          backgroundSize: "cover",
           backgroundPosition: "center",
           position: "relative",
-          "&::before": {
-            content: '""',
+        }}
+      >
+        <Box
+          sx={{
             top: 0,
             left: 0,
             position: "absolute",
             width: "100%",
-            height: 88,
+            height: 350,
             background:
-              "linear-gradient(180deg, #705A4D 0%, rgba(213, 205, 200, 0) 82.55%);",
-          },
-          "&::after": {
-            content: '""',
-            bottom: 0,
+              "linear-gradient(180deg, #D5CDC8 35.42%, rgba(217, 217, 217, 0) 100%)",
+            zIndex: 1,
+          }}
+        />
+        <Box
+          sx={{
+            bottom: -3,
             left: 0,
             position: "absolute",
             width: "100%",
-            height: 88,
+            height: 200,
             background:
-              "linear-gradient(180deg, rgba(213, 205, 200, 0) 0%, #D5CDC8 82.55%);",
-          },
-        }}
-      >
-        <Typography
-          sx={{ fontFamily: "Mea Culpa !important" }}
-          align="center"
-          color="#fff"
-          fontSize={21}
-          mt={7}
+              "linear-gradient(180deg, rgba(213, 205, 200, 0) 0%, #D5CDC8 82.55%)",
+          }}
+        />
+        <Stack
+          direction="row"
+          p={1.5}
+          justifyContent="space-between"
+          sx={{ zIndex: 2 }}
         >
-          Hiếu & Hải
-          <Typography
-            sx={{ fontFamily: "Medula One !important" }}
-            align="center"
-            color="#fff"
-            fontSize={13}
+          <ChildImage image="/images/1.jpeg" />
+          <ChildImage image="/images/2.jpeg" />
+          <ChildImage image="/images/3.jpg" />
+        </Stack>
+        <Stack
+          direction="row"
+          mt={10}
+          p={2}
+          alignItems="center"
+          justifyContent="space-between"
+        >
+          <Box
+            sx={{
+              width: 160,
+              height: 220,
+              borderRadius: 1,
+              background: "url(/images/4.jpeg)",
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              transform: "rotate(-8.82deg)",
+            }}
           >
-            24.12.2022
+            <Box
+              sx={{
+                width: 160,
+                height: 110,
+                border: "4px solid #705A4D",
+                borderRadius: "5px 5px 0px 0px",
+                position: "relative",
+                transform: "rotate(26deg)",
+                mt: 2,
+                ml: -1,
+                "&::before": {
+                  content: '"Love"',
+                  textAlign: "right",
+                  color: "#fff",
+                  position: "absolute",
+                  width: "100%",
+                  height: 20,
+                  background: "#705A4D",
+                  border: "4px solid #705A4D",
+                  borderRadius: "0px 0px 5px 5px",
+                  bottom: -15,
+                  left: -4,
+                },
+              }}
+            />
+          </Box>
+          <Typography zIndex={2} fontSize={11} width={160} color="#FFFFFF">
+            {`{inviters} tin rằng: “Đời người sẽ trải qua rất nhiều điều. Tất cả
+            chúng ta rồi sẽ già đi và thứ đọng lại trong trí nhớ chỉ có 1 vài
+            khoảnh khắc nào đấy thôi.”`}
           </Typography>
-        </Typography>
-      </Box>
+        </Stack>
+      </Stack>
     </WrapperBase>
   );
 }
