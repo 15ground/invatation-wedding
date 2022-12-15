@@ -137,6 +137,24 @@ export default function HomePage() {
           </Typography>
         </Stack>
       </Stack>
+      <Stack p={2} spacing={1}>
+        <Typography fontSize={11}>
+          Nên đây không phải là một đám cưới hoành tráng nhất.{" "}
+        </Typography>
+        <Typography fontSize={11}>
+          Nhưng đây sẽ là một đám cưới đặc biệt vì có những khách mời đặc biệt -
+          những người đã và vẫn thương nhau bằng chân tình, bằng thanh xuân và
+          bằng thứ tình cảm mà khoảng cách địa lý hay thời gian cũng không còn
+          là vấn đề.
+        </Typography>
+        <Typography fontSize={11}>
+          {`{guest1} ơi, hãy để inviters được đón {guest1} ở bữa tiệc này nhé! Để{" "}
+          {inviter} có cơ hội được chia sẻ niềm hạnh phúc này, được cùng{" "}
+          {guest1} nâng ly và cùng nhau biến đêm ấy trở thành khoảnh khắc để
+          mình luôn nhớ về nhau nhé!`}
+        </Typography>
+        <Typography fontSize={11}> Thương - Nhớ - Trân trọng!</Typography>
+      </Stack>
     </WrapperBase>
   );
 }
