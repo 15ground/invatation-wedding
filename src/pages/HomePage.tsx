@@ -142,7 +142,7 @@ export default function HomePage() {
               sx={{
                 width: !isMobile ? 400 : 160,
                 height: !isMobile ? 270 : 110,
-                border: "4px solid #705A4D",
+                border: `${!isMobile ? "10px" : "4px"} solid #705A4D`,
                 borderRadius: "5px 5px 0px 0px",
                 position: "relative",
                 transform: "rotate(26deg)",
@@ -153,13 +153,15 @@ export default function HomePage() {
                   textAlign: "right",
                   color: "#fff",
                   position: "absolute",
-                  width: "100%",
-                  height: 20,
+                  width: !isMobile ? "103%" : "100%",
+                  pt: !isMobile ? 0.5 : 0,
+                  height: !isMobile ? 30 : 20,
                   background: "#705A4D",
                   border: "4px solid #705A4D",
                   borderRadius: "0px 0px 5px 5px",
                   bottom: -15,
-                  left: -4,
+                  left: !isMobile ? -10 : -4,
+                  fontSize: !isMobile ? 22 : "inherit",
                 },
               }}
             />

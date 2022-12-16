@@ -8,7 +8,7 @@ type Props = {
 export default function FirstSection(props: Props) {
   const { isMobile } = useMobile();
   return (
-    <Stack direction="row" justifyContent="center">
+    <Stack direction="row" justifyContent="center" mt={5}>
       <Stack sx={{ p: 2 }} spacing={1} maxWidth={!isMobile ? "80%" : "auto"}>
         <Typography fontSize={!isMobile ? 20 : 11}>
           {props.guest.guest1} ơi!
