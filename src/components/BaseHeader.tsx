@@ -3,16 +3,18 @@ import React from "react";
 
 export default function BaseHeader({
   children,
+  height,
 }: {
   children: React.ReactElement;
+  height?: number | string;
 }) {
   return (
     <Box
       sx={{
         width: "100%",
-        height: 250,
+        height: height,
         background:
-          "linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(255, 255, 255, 0) 38.14%), url(/images/header.png)",
+          "linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(255, 255, 255, 0) 38.14%), url(/images/header.jpeg)",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -33,7 +35,7 @@ export default function BaseHeader({
           left: 0,
           position: "absolute",
           width: "100%",
-          height: 80,
+          height: 150,
           background:
             "linear-gradient(180deg, rgba(213, 205, 200, 0) 0%, #D5CDC8 82.55%)",
         },
