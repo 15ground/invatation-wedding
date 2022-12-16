@@ -4,15 +4,41 @@ import FirstSection from "@components/FirstSection";
 import useMobile from "@hooks/useMobile";
 import { Box, Stack, styled, Typography } from "@mui/material";
 import { theme } from "@theme";
-import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 const WrapperBase = styled(Stack)({
   height: "auto",
   backgroundColor: theme.palette.primary.main,
 });
+export type Guest = {
+  id: number | string;
+  guest1: string;
+  guest2: string;
+  inviter: string;
+  inverters: string;
+};
 export default function HomePage() {
   const params = useParams<{ id: string }>();
-  console.log("🚀 ~ file: HomePage.tsx:14 ~ HomePage ~ params", params)
+  const [guest, setGuest] = useState<Guest>({} as Guest);
+  const navigate = useNavigate();
+  const guests: Guest[] = [
+    {
+      id: 1,
+      guest1: "Quyết",
+      guest2: "Bạn và người yêu",
+      inviter: "mình",
+      inverters: "Tụi mình",
+    },
+  ];
   const { isMobile, isSmallDesktop } = useMobile();
+  useEffect(() => {
+    const _guest = guests.find((g) => g.id === Number(params.id));
+    if (!_guest) {
+      navigate("/error");
+    }
+    setGuest(_guest ?? ({} as Guest));
+  }, [params.id]);
+
   return (
     <WrapperBase>
       <BaseHeader height={!isMobile ? 700 : 300}>
@@ -44,11 +70,21 @@ export default function HomePage() {
           minWidth={320}
           maxWidth={!isMobile ? "80%" : "100%"}
           p={2}
+          color="#fff"
         >
-          {`Đây không phải là thiệp cưới. Đây là một thư mời chứa một tình cảm đặc biệt gửi đến 1 người đặc biệt của {inviter} theo 1 cách đặc biệt nhất!`}
+          {`Đây không phải là thiệp cưới. Đây là một thư mời chứa một tình cảm đặc biệt gửi đến 1 người đặc biệt của ${guest.inviter} theo 1 cách đặc biệt nhất!`}
         </Typography>
       </Stack>
-      <FirstSection />
+      <Box
+        sx={{
+          p: 3,
+          background: "url(/images/decors.png)",
+          backgroundSize: "400px",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+        }}
+      />
+      <FirstSection guest={guest} />
       <Stack
         sx={{
           height: !isMobile ? 1500 : 525,
@@ -134,7 +170,7 @@ export default function HomePage() {
             width={!isMobile ? "50%" : 160}
             color="#FFFFFF"
           >
-            {`{inviters} tin rằng: “Đời người sẽ trải qua rất nhiều điều. Tất cả
+            {`${guest.inverters} tin rằng: “Đời người sẽ trải qua rất nhiều điều. Tất cả
             chúng ta rồi sẽ già đi và thứ đọng lại trong trí nhớ chỉ có 1 vài
             khoảnh khắc nào đấy thôi.”`}
           </Typography>
@@ -157,9 +193,9 @@ export default function HomePage() {
             còn là vấn đề.
           </Typography>
           <Typography fontSize={!isMobile ? 20 : 11}>
-            {`{guest1} ơi, hãy để inviters được đón {guest1} ở bữa tiệc này nhé! Để{" "}
-          {inviter} có cơ hội được chia sẻ niềm hạnh phúc này, được cùng{" "}
-          {guest1} nâng ly và cùng nhau biến đêm ấy trở thành khoảnh khắc để
+            {`${guest.guest1} ơi, hãy để ${guest.inviter} được đón ${guest.guest1} ở bữa tiệc này nhé! Để
+          ${guest.inviter} có cơ hội được chia sẻ niềm hạnh phúc này, được cùng 
+          ${guest.guest1} nâng ly và cùng nhau biến đêm ấy trở thành khoảnh khắc để
           mình luôn nhớ về nhau nhé!`}
           </Typography>
           <Typography fontSize={!isMobile ? 20 : 11}>
@@ -359,11 +395,11 @@ export default function HomePage() {
           }}
         >
           <Typography fontSize={!isMobile ? 20 : 11}>
-            {`{inviter} biết {guest1} sẽ có rất nhiều công việc cần giải quyết và
+            {`${guest.inviter} biết ${guest.guest1} sẽ có rất nhiều công việc cần giải quyết và
             đôi khi thật khó để sắp xếp thời gian nhưng hãy xử lý công việc sớm
             để chung vui`}
             <br />
-            {`cùng {inviters} nhé.`}
+            {`cùng ${guest.inverters} nhé.`}
             <br />
             Vì sẽ thật buồn nếu bữa tiệc vắng đi <br /> một người thật đặc biệt.{" "}
           </Typography>
