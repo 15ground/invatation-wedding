@@ -386,10 +386,10 @@ export default function HomePage() {
         <Box
           sx={{
             width: "80%",
-            height: !isMobile ? 185 : 120,
+            height: !isMobile ? 180 : 120,
             background: "#fff",
             position: "absolute",
-            top: !isMobile ? 60 : 0,
+            top: !isMobile ? 75 : 0,
             zIndex: 2,
             borderRadius: 1,
             textAlign: "center",
@@ -399,9 +399,7 @@ export default function HomePage() {
           <Typography fontSize={!isMobile ? 20 : 11}>
             {`${guest.inviter} biết ${guest.guest1} sẽ có rất nhiều công việc cần giải quyết và
             đôi khi thật khó để sắp xếp thời gian nhưng hãy xử lý công việc sớm
-            để chung vui`}
-            <br />
-            {`cùng ${guest.inverters} nhé.`}
+            để chung vui cùng ${guest.inverters} nhé.`}
             <br />
             Vì sẽ thật buồn nếu bữa tiệc vắng đi <br /> một người thật đặc biệt.{" "}
           </Typography>
